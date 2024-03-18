@@ -1,0 +1,402 @@
+@import "./guideline";
+@import "./mixin";
+
+// 通用
+* {
+    @include all();
+}
+html {
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    // @include mobile-L {
+    //     overflow-x: hidden;
+    // }
+}
+body.modal-open {
+    padding-right: 0px !important;
+}
+.bk-mask {
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    opacity: 0.4;
+    position: absolute;
+    z-index: 1;
+}
+body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-size: $size-p;
+    font-family: "Noto Sans TC", sans-serif, "微軟正黑體";
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    position: relative !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+    @include mobile-L {
+        min-height: unset;
+        height: 100vh;
+    }
+    @include mobile-XS() {
+        font-size: 0.875rem;
+    }
+
+    // index
+    .login-body {
+        width: 600px;
+        min-width: 260px;
+        background-color: #fff;
+        border-radius: 25px;
+        z-index: 90;
+        @include web-XL {
+            width: 500px;
+            margin-top: $margin-M;
+        }
+        @include mobile-L {
+            width: 100%;
+            border-radius: 0;
+            margin-top: 0;
+        }
+        .login-group {
+            width: 100%;
+            max-width: 350px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: $padding-S 0px;
+            text-align: center;
+            margin: auto;
+            @include web-XL {
+                padding: $padding-XS * 1.5 0px;
+            }
+            @include mobile-L {
+                padding: $padding-S 40px;
+                max-width: unset;
+                margin: 0;
+            }
+            @include mobile-XS {
+                padding: 50px 30px;
+            }
+            .login-top {
+                width: 100%;
+                text-align: center;
+                .logo {
+                    max-width: 200px;
+                    object-fit: contain;
+                    margin-bottom: $margin-XS/4;
+                    @include mobile-L {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .title-box {
+                width: 100%;
+                height: 40px;
+                line-height: 38px;
+                background-color: $bg-light-red;
+                margin-top: $margin-XS/2;
+                border-radius: 5px;
+            }
+
+            .tab {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: $margin-S;
+                @include web-XL {
+                    margin-top: $margin-XS;
+                }
+                @include mobile-L {
+                    margin-top: $margin-XS * 1.75;
+                }
+
+                .menu-gp {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .menu-btn {
+                        width: 50%;
+                        height: 40px;
+                        background-color: $gray;
+                        border-radius: 5px;
+                        font-size: $size-p;
+                        line-height: 40px;
+                        color: #fff;
+                        font-weight: normal;
+                        margin-top: $margin-XS/2;
+                        &:nth-child(1) {
+                            margin-right: 10px;
+                        }
+                    }
+                    .active_btn {
+                        background-color: $green;
+                    }
+                }
+            }
+
+            .login-bot {
+                width: 100%;
+                display: none;
+                flex-wrap: wrap;
+                margin-top: $margin-XS;
+                justify-content: center;
+                @include web-XL {
+                    margin-top: $margin-XS;
+                }
+                @include mobile-L {
+                    margin-top: $margin-XS * 1.75;
+                }
+                //checkbox
+                .form-check {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    margin: 0;
+                    margin-bottom: $margin-XS;
+                    padding-left: 0;
+                    input,
+                    select {
+                        text-align: left;
+                        &[type="radio"] {
+                            width: 20px;
+                            height: 20px;
+                            margin: 0;
+                            border: 1px solid $light-sky;
+                        }
+                    }
+                    label {
+                        width: auto;
+                        margin: 0;
+                        padding: 0;
+                        margin: 0 $margin-XS * 1.5;
+                        margin-left: $margin-XS/1.5;
+                        color: $text;
+                        font-size: $size-h4;
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                        @include mobile-XS() {
+                            margin: 0 $margin-XS;
+                            margin-left: $margin-XS/2;
+                        }
+                    }
+                }
+                //圖片驗證碼
+                .code-gp {
+                    width: 100%;
+                    padding: 0;
+                    display: flex;
+                    margin-bottom: $margin-XS;
+                    @include web-S {
+                        justify-content: start;
+                    }
+                    @include mobile-XS() {
+                        margin-bottom: $margin-XS;
+                    }
+                    label {
+                        width: 30%;
+                        text-align: left;
+                        @include mobile-L() {
+                            width: 34%;
+                        }
+                        @include mobile-XS {
+                            width: 40%;
+                        }
+                    }
+
+                    .text-gp {
+                        width: 70%;
+                        display: flex;
+                        align-items: center;
+                        @include mobile-L() {
+                            width: 66%;
+                        }
+                        @include mobile-XS {
+                            width: 60%;
+                            flex-wrap: wrap;
+                        }
+                        .code {
+                            width: 40%;
+                            margin-right: 10px;
+                            margin-bottom: 0;
+                            @include mobile-XS() {
+                                width: 100%;
+                                margin-right: 0;
+                                margin-bottom: $padding-XXS;
+                            }
+                        }
+                        .RP {
+                            width: 30%;
+                            max-height: 25px;
+                            margin: 0;
+                            margin-right: 10px;
+                            @include web-L {
+                                width: auto;
+                                max-height: unset;
+                                height: 30px;
+                            }
+                            @include mobile-L() {
+                                width: 40%;
+                                height: unset;
+                            }
+                            @include mobile-XS() {
+                                width: 50%;
+                                margin-top: 6px;
+                            }
+                        }
+                        .reform {
+                            height: 20px;
+                            width: 20px;
+                            margin: 0;
+                        }
+                    }
+                }
+                .btn-gp {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    .btn {
+                        width: 50%;
+                        height: 40px;
+                        background-color: $blue;
+                        border-radius: 5px;
+                        font-size: $size-p;
+                        color: #fff;
+                        font-weight: normal;
+                        margin-top: 20px;
+                        @include mobile-L {
+                            width: 220px;
+                        }
+                        @include mobile-XS {
+                            width: 200px;
+                        }
+                        &:nth-child(1) {
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+            .active {
+                display: flex;
+            }
+        }
+    }
+    footer {
+        width: 100%;
+        min-width: 260px;
+        padding: 15px 0;
+        font-weight: normal;
+        text-align: center;
+        z-index: 90;
+        bottom: 0;
+        @include web-XL {
+            margin-top: $margin-XS;
+        }
+        @include pad {
+            padding: $padding-XS $padding-XS/2;
+        }
+
+        .btn-gp {
+            margin-bottom: $margin-XS/1.5;
+            a {
+                color: $title-W;
+                text-align: center;
+                margin-bottom: $margin-XS;
+                &:hover {
+                    background-color: transparent !important;
+                }
+                span {
+                    margin: 0 $margin-XS/2;
+                    line-height: $size-p * 2;
+                    border-bottom: 2px solid $title-W;
+                    padding-bottom: 3px;
+                }
+            }
+        }
+        p {
+            color: #fff;
+            font-weight: 200;
+            letter-spacing: 1px;
+            text-align: center;
+            font-size: $size-p;
+            margin: 0;
+        }
+        .footer-p-M {
+            display: none;
+            @include pad {
+                display: block;
+            }
+            @include mobile-L {
+                display: none;
+            }
+        }
+    }
+    // 申請帳號
+    .apply-account {
+        padding: $padding-XS/1.5 0;
+        padding-bottom: 0;
+        text-align: center;
+        .title {
+            .logo {
+                width: 200px;
+            }
+        }
+        .container {
+            .searchbar {
+                @include searchbar();
+            }
+            .btn-gp {
+                display: flex;
+                justify-content: center;
+                margin-bottom: $margin-XS/2;
+                @include mobile-L {
+                    flex-wrap: wrap;
+                }
+                .btn {
+                    display: inline-block;
+                    // @include mobile-L {
+                    //     width: 100%;
+                    // }
+                }
+                .btn:not(:last-child) {
+                    margin-right: $margin-XS/2;
+                    @include mobile-L {
+                        margin-right: 0;
+                    }
+                }
+            }
+            form {
+                @include form();
+                .form-gp {
+                    input {
+                        height: initial;
+                    }
+                }
+                .form-submit{
+                    button{
+                        @include mobile-L{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.page {
+    background-image: unset;
+    align-items: start;
+    background-color: $bg-light-blue;
+}

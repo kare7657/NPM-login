@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCG EIP-新增人員</title>
+    <!-- Font Awesome Icons -->
+    <script src="fontawesome-free-6.1.1-web/js/fontawesome-kit.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fontawesome-free-6.1.1-web/css/all.css">
+    <!-- JQ UI -->
+    <link rel="stylesheet" href="scss/jquery-ui.css" />
+    <!-- Select2 -->
+    <link rel="stylesheet" href="scss/select2.min.css">
+    <link rel="stylesheet" href="scss/select2-bootstrap4.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="scss/bootstrap.4.2.css">
+    <!-- css -->
+    <link rel="stylesheet" href="scss/loginstyle.css">
+
+    <style>
+        /* datepicker日期 */
+        .ui-datepicker {
+            font-size: 1rem;
+            font-family: "sans-serif", "微軟正黑體";
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .ui-datepicker-header.ui-widget-header.ui-helper-clearfix.ui-corner-all {
+            vertical-align: middle;
+        }
+
+        .ui-widget-header {
+            border: none;
+            background: #fff !important;
+            color: #222;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .ui-widget-header select {
+            border: 1px solid #eee;
+            height: 35px;
+            padding-left: 10px;
+            border-radius: 4px;
+            font-size: 0.875rem !important;
+        }
+
+        .ui-datepicker-title {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        .ui-datepicker select.ui-datepicker-year {
+            width: 60%;
+            margin-right: 10px;
+        }
+
+        .ui-datepicker select.ui-datepicker-month {
+            width: calc(40% - 10px);
+        }
+
+        .ui-datepicker-prev.ui-corner-all,
+        .ui-datepicker-next.ui-corner-all {
+            height: 35px;
+            margin-top: 5px;
+            cursor: pointer;
+            border-radius: 0;
+            color: #555555;
+        }
+
+        .ui-datepicker-prev.ui-corner-all:hover,
+        .ui-datepicker-next.ui-corner-all:hover {
+            border: none;
+            background-color: #e6f4ff !important;
+        }
+
+        .ui-datepicker-prev::after {
+            font-family: "Font Awesome 5 Free";
+            content: "\f053";
+            font-weight: bold;
+            width: 12px;
+            line-height: 8px;
+            position: absolute;
+            left: calc(50% - 6px);
+            top: calc(50% - 6px);
+        }
+
+        .ui-datepicker-next::after {
+            font-family: "Font Awesome 5 Free";
+            content: "\f054";
+            font-weight: bold;
+            width: 12px;
+            line-height: 8px;
+            position: absolute;
+            left: calc(50% - 6px);
+            top: calc(50% - 6px);
+        }
+
+        .ui-state-default,
+        .ui-widget-content .ui-state-default,
+        .ui-widget-header .ui-state-default {
+            background: #fff;
+            border: none;
+        }
+
+        .ui-state-default:hover {
+            background-color: #e6f4ff;
+        }
+
+        .ui-datepicker-calendar thead {
+            background-color: #f4f4f4 !important;
+            border: none;
+        }
+
+        .ui-datepicker-calendar th {
+            padding: 5px 0;
+        }
+    </style>
+</head>
+
+<body class="page">
+    <section class="apply-account">
+        <div class="title">
+            <img src="img/brand.gif" alt="" class="logo-single">
+            <h2>新增人員</h2>
+        </div>
+
+        <div class="container">
+            <form>
+                <div class="form-gp">
+                    <label>所屬機關單位<span>*</span></label>
+                    <p>民政處自治行政科 / 376480000AU10000001</p>
+                </div>
+                <div class="form-gp">
+                    <label for="account">新帳號<span>*</span></label>
+                    <input type="text" name="account" id="account">
+                </div>
+                <div class="form-gp">
+                    <label for="password">帳號密碼<span>*</span></label>
+                    <input type="password" name="password" id="password" style="margin-bottom: 5px;">
+                    <p class="notice">&#10022; 密碼長度至少8碼、必須為英文和數字混合、所含大寫英文字母至少2個、密碼中不可出現帳號</p>
+                </div>
+                <div class="form-gp">
+                    <div class="w50">
+                        <label for="lastname">姓<span>*</span></label>
+                        <input type="text" name="lastname" id="lastname">
+                    </div>
+                    <div class="w50">
+                        <label for="firstname">名<span>*</span></label>
+                        <input type="text" name="firstname" id="firstname">
+                    </div>
+                </div>
+                <div class="form-gp">
+                    <label for="birthday">生日</label>
+                    <input type="text" class="western-date mb-nokeyboard" name="birthday" id="birthday"
+                        placeholder="yyyy-mm-dd">
+                </div>
+                <div class="form-gp-headshot">
+                    <div class="input-gp">
+                        <div class="form-gp">
+                            <label for="birthday">性別</label>
+                            <div class="check-gp">
+                                <div class="form-check">
+                                    <input type="radio" name="gender" id="male" value="male">
+                                    <label for="male">男</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" name="gender" id="female" value="female">
+                                    <label for="female">女</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-gp">
+                            <label for="download">檔案下載<span>*</span></label>
+                            <input type="file" name="download" id="download">
+                        </div>
+                    </div>
+                    <div class="headshot-gp">
+                        <img src="img/headshot_male.jpg" alt="" class="headshot">
+                        <div class="btn">
+                            <button class="more" type="button" onclick="javascript:location.href=''">
+                                上傳
+                            </button>
+                            <button class="more" type="button" onclick="javascript:location.href=''">
+                                刪除
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-gp">
+                    <label for="birthday">checkbox</label>
+                    <div class="check-gp">
+                        <div class="form-check">
+                            <input type="checkbox" name="checkbox" id="checkbox1" value="checkbox1">
+                            <label for="checkbox1">1</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" name="checkbox" id="checkbox2" value="checkbox2">
+                            <label for="checkbox2">2</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" name="checkbox" id="checkbox3" value="checkbox3">
+                            <label for="checkbox3">3</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" name="checkbox" id="checkbox4" value="checkbox4">
+                            <label for="checkbox4">4</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-gp">
+                    <label for="account-ID">身份證字號<span>*</span></label>
+                    <input type="text" name="account-ID" id="account-ID" placeholder="A123456789">
+                </div>
+                <div class="form-gp">
+                    <label for="english-name">英文名稱</label>
+                    <input type="text" name="english-name" id="english-name">
+                </div>
+                <div class="form-gp">
+                    <label for="professional-title">職稱<span>*</span></label>
+                    <!-- <input type="text" name="professional-title" id="professional-title"> -->
+                    <select class="select2 select2bs4" id="professional-title">
+                        <option>option 1</option>
+                        <option>option 2</option>
+                        <option>option 3</option>
+                        <option>option 4</option>
+                        <option>option 5</option>
+                        <option>option 6</option>
+                        <option>option 7</option>
+                        <option>option 8</option>
+                        <option>option 9</option>
+                        <option>option 10</option>
+                    </select>
+                </div>
+                <div class="form-gp">
+                    <label for="address">通訊住址</label>
+                    <input type="text" name="address" id="address">
+                </div>
+                <div class="form-gp">
+                    <label for="address-forever">永久地址</label>
+                    <input type="text" name="address-forever" id="address-forever">
+                </div>
+                <div class="form-gp">
+                    <label for="email">備份Email<span>*</span></label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="form-gp">
+                    <label for="email-default">預設Email<span>*</span></label>
+                    <div class="mail">
+                        <input type="email" class="w40" name="email-default" id="email-default">
+                        <p class="w60">@taichung.gov.tw</p>
+                    </div>
+                </div>
+                <div class="form-gp">
+                    <label for="tel">聯絡電話<span>*</span></label>
+                    <div class="tel">
+                        <input type="tel" name="tel" id="tel" class="w20" placeholder="00">
+                        <span>-</span>
+                        <input type="tel" name="tel" id="tel2" class="w80" placeholder="12345678">
+                    </div>
+                </div>
+                <div class="form-gp">
+                    <label for="tel3">聯絡電話<span>*</span></label>
+                    <div class="tel">
+                        <input type="tel" name="tel" id="tel3" class="w20" placeholder="00">
+                        <span>-</span>
+                        <div class="w80">
+                            <input type="tel" name="tel" id="tel4" class="w80" placeholder="12345678">
+                            <span>#</span>
+                            <input type="tel" name="tel" id="tel5" class="w20" placeholder="分機">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-gp">
+                    <label for="tel-office">公務電話</label>
+                    <input type="tel" name="tel-office" id="tel-office">
+                </div>
+                <div class="form-gp">
+                    <label for="tel-fax">傳真號碼</label>
+                    <input type="tel" name="tel-fax" id="tel-fax">
+                </div>
+                <div class="form-gp">
+                    <label for="cell-phone">手機<span>*</span></label>
+                    <input type="tel" name="cell-phone" id="cell-phone" placeholder="0911222333">
+                </div>
+                <div class="form-gp">
+                    <label for="download">檔案下載<span>*</span></label>
+                    <input type="file" name="download" id="download">
+                </div>
+                <div class="form-submit">
+                    <div class="btn-gp">
+
+                        <button type="submit" class="btn" onclick="javascript:location.href=''">儲存</button>
+                        <button type="button" class="btn"
+                            onclick="javascript:location.href='apply-view.html'">回上一頁</button>
+                        <button type="button" class="btn" data-toggle="modal"
+                            data-target="#modalChangPWD">modal</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- modal -->
+    <div class="modal fade modal-template" id="modalChangPWD" tabindex="-1" role="dialog"
+        aria-labelledby="modalPrivateLabel" data-backdrop="static" style=" padding-top: 0;">
+        <form name="fm_ChangPWD" id="fm_ChangPWD" method="post" action="ChangPWD.jsp" target="frm_ChangPWD">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        class="glyphicon glyphicon-remove" aria-hidden="true"></span></button> -->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h2 class="modal-title" id="modalPrivateLabel">變更密碼</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-gp">
+                            <label for="account">帳號<span class="notice">*</span></label>
+                            <input type="password" name="account" id="account" value="">
+                            <div class="text">
+                                <p class="notice">testtesttesttest</p>
+                            </div>
+                        </div>
+                        <div class="form-gp">
+                            <label for="email">信箱<span class="notice">*</span></label>
+                            <input type="text" name="email" id="email" value="">
+                            <div class="text">
+                                <p class="notice">testtesttesttest</p>
+                            </div>
+                        </div>
+                        <div class="code-gp">
+                            <label for="code">驗證碼</label>
+                            <div class="text-gp">
+                                <input class="code" type="text" name="code" id="code">
+                                <img class="RP" src="img/RandomPic_ForLogin.jpg" alt="圖片驗證碼">
+                                <a href=""><img class="reform" src="img/redo.svg" alt="重整"></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" name="go" id="go">確認更改</button>
+                        <button type="button" name="cancel" id="cancel" data-dismiss="modal">取消</button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- jQuery 日期選擇器-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- InputMask 限制輸入格式-->
+    <script src="js/moment.min.js"></script>
+    <script src="js/jquery.inputmask.bundle.js"></script>
+    <!-- bootstrap -->
+    <script src="js/bootstrap.min.4.2.js"></script>
+    <script src="js/popper.min.js"></script>
+
+
+    <!-- Select2 -->
+    <script src="js/select2.full.min.js"></script>
+    <script>
+        $(function () {
+            //Initialize Elements
+            $('.select2').select2();
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+        })
+    </script>
+
+    <!-- JQ datepicker -->
+    <script>
+        $(document).ready(function () {
+            $(".chinese-date").datepicker({
+                changeYear: true,
+                changeMonth: true,
+                currentText: "Now",
+                dateFormat: "Rmmdd",
+                showButtonPanel: false,
+                yearRange: "1930:2060",
+            });
+            $(".western-date").datepicker({
+                changeYear: true,
+                changeMonth: true,
+                currentText: "Now",
+                dateFormat: "yy/mm/dd",
+                showButtonPanel: false,
+                yearRange: "1930:2060",
+            });
+        });
+        //將.datepicker改成民國年與西元年小套件同時存在
+        $(function (datepicker) {
+            //先設定預設西元年的datepicker必要功能
+            var old_generateMonthYearHeader = $.datepicker._generateMonthYearHeader;
+            var old_formatDate = $.datepicker.formatDate;
+            var old_parseDate = $.datepicker.parseDate;
+
+            $.extend($.datepicker, {
+                //選擇日期之後的value
+                formatDate: function (format, date, settings) {
+                    var oformatDate = old_formatDate(format, date, settings);
+
+                    if (format == 'Rmmdd') {
+                        var d = date.getDate();
+                        var m = date.getMonth() + 1;
+                        var y = date.getFullYear();
+                        var fm = function (v) {
+                            return (v < 10 ? '0' : '') + v;
+                        };
+
+                        if ((y - 1911) >= 100) { y = y - 1911; } else { y = "0" + String(y - 1911); }
+                        // 日期顯示格式
+                        return (y) + '/' + fm(m) + '/' + fm(d);
+                    }
+                    return oformatDate;
+
+                },
+                //點取已存在日期的parse
+                parseDate: function (format, value, settings) {
+                    var v = new String(value);
+                    var Y, M, D;
+                    if (format == 'Rmmdd') {
+                        if (v.length == 7) {/*1001215*/
+                            Y = v.substring(0, 3) - 0 + 1911;
+                            M = v.substring(3, 5) - 0 - 1;
+                            D = v.substring(5, 7) - 0;
+                            return (new Date(Y, M, D));
+                        } else if (v.length == 6) {/*0981215*/
+
+                            Y = "0" + String(v.substring(0, 2) - 0 + 1911);
+                            M = v.substring(2, 4) - 0 - 1;
+                            D = v.substring(4, 6) - 0;
+                            return (new Date(Y, M, D));
+                        }
+                        return (new Date());
+                    } else {
+                        var oparseDate = old_parseDate.apply(this, [format, value, settings]);
+                        return (oparseDate);
+                    }
+
+                },
+                //改變小工具的年-民國
+                _generateMonthYearHeader: function (inst, drawMonth, drawYear, minDate, maxDate, secondary, monthNames, monthNamesShort) {
+                    var dateFormat = this._get(inst, "dateFormat");
+                    var htmlYearMonth = old_generateMonthYearHeader.apply(this, [inst, drawMonth, drawYear, minDate, maxDate, secondary, monthNames, monthNamesShort]);
+                    if (dateFormat == 'Rmmdd') {
+                        if ($(htmlYearMonth).find(".ui-datepicker-year").length > 0) {
+                            htmlYearMonth = $(htmlYearMonth).find(".ui-datepicker-year").find("option").each(function (i, e) {
+                                if (Number(e.value) - 1911 > 0) $(e).text("民國" + (Number(e.innerText) - 1911) + "年");
+                            }).end().end().get(0).outerHTML;
+                        }
+                    }
+                    return htmlYearMonth;
+                },
+
+            });
+
+            // 中文
+            $.datepicker.regional["zh-TW"] = {
+                monthNames: ["一月", "二月", "三月", "四月", "五月", "六月",
+                    "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                monthNamesShort: ["一月", "二月", "三月", "四月", "五月", "六月",
+                    "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                dayNames: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+                dayNamesShort: ["週日", "週一", "週二", "週三", "週四", "週五", "週六"],
+                dayNamesMin: ["日", "一", "二", "三", "四", "五", "六"],
+                weekHeader: "週",
+                dateFormat: "yyy/mm/dd",
+            };
+            $.datepicker.setDefaults($.datepicker.regional["zh-TW"]);
+
+            return datepicker.regional["zh-TW"];
+
+        });
+
+        // 手機隱藏鍵盤
+        $(".mb-nokeyboard").focus(function () {
+            document.activeElement.blur();
+        });
+    </script>
+
+    <!-- input mask -->
+    <script>
+        $(document).ready(function () {
+            $(".western-date").inputmask({ alias: "datetime", inputFormat: "yyyy-mm-dd" });
+            // $(".chinese-date").inputmask({ alias: "datetime", inputFormat: "yyy/mm/dd" });
+        });
+    </script>
+</body>
+
+
+</html>

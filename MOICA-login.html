@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自然人憑證登入</title>
+    <!-- Font Awesome Icons -->
+    <script src="fontawesome-free-6.1.1-web/js/fontawesome-kit.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fontawesome-free-6.1.1-web/css/all.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="scss/adminlte.min.css">
+    <!-- JQ UI -->
+    <link rel="stylesheet" href="scss/jquery-ui.css" />
+    <!-- css -->
+    <link rel="stylesheet" href="scss/loginstyle.css">
+
+    <style>
+        body {
+            background-image: url("img/MOICA-BG.jpg");
+        }
+    </style>
+</head>
+
+<body>
+    <section class="login-body">
+        <div class="login-group">
+            <div class="login-top">
+                <h1>自然人憑證登入</h1>
+            </div>
+
+            <form class="login-bot active" id="login_CDC_TAB">
+                <label for="Pin-Code">Pin Code</label>
+                <input type="text" name="Pin-Code" id="Pin-Code">
+
+                <div class="btn-gp">
+                    <input type="submit" value="登入" class="btn w-100 mr-0">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        //登入方式
+        var login_btn = document.querySelector("#login_btn")
+        var login_CDC_btn = document.querySelector("#login_CDC_btn")
+
+        var login_TAB = document.querySelector("#login_TAB")
+        var login_CDC_TAB = document.querySelector("#login_CDC_TAB")
+
+        function clear_active() {
+            login_btn.classList.remove("active_btn")
+            login_CDC_btn.classList.remove("active_btn")
+            login_TAB.classList.remove("active")
+            login_CDC_TAB.classList.remove("active")
+        }
+
+
+        login_btn.onclick = function () {
+            clear_active()
+            login_btn.classList.toggle("active_btn")
+            login_TAB.classList.toggle("active")
+        }
+        login_CDC_btn.onclick = function () {
+            clear_active()
+            login_CDC_btn.classList.toggle("active_btn")
+            login_CDC_TAB.classList.toggle("active")
+        }
+        console.error;
+    </script>
+
+    <!-- modal -->
+    <script>
+        $(".modal2-btn").click(function () {
+            $('#Modal-2').modal({ backdrop: 'static', keyboard: false });
+        });
+    </script>
+</body>
+
+</html>

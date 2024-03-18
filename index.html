@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAM EIP</title>
+    <!-- Font Awesome Icons -->
+    <script src="fontawesome-free-6.1.1-web/js/fontawesome-kit.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fontawesome-free-6.1.1-web/css/all.css">
+    <!-- JQ UI -->
+    <link rel="stylesheet" href="scss/jquery-ui.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="scss/adminlte.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="scss/loginstyle.css">
+
+    <style>
+        body {
+            background-image: url("../img/bgimg.jpg");
+            background-position: center bottom;
+            display: block;
+        }
+
+        body .login-body {
+            background-color: transparent !important;
+            width: initial;
+            margin-top: 20vh;
+        }
+
+        /* footer字改黑 */
+        body footer .btn-gp a {
+            color: black;
+        }
+
+        body footer .btn-gp a span {
+            border-bottom: 2px solid black;
+        }
+
+        body footer p {
+            color: black;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            letter-spacing: 6px;
+            font-weight: normal;
+        }
+
+        h4 {
+            width: 100%;
+            text-align: center;
+            font-size: 1.625rem;
+        }
+
+        body .login-body .login-group {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        body .login-body .login-group .login-top .logo {
+            margin-bottom: 18px;
+            max-width: 230px;
+        }
+
+        body .login-body .login-group .login-top {
+            margin-bottom: 0px;
+        }
+
+        body .login-body .login-group .login-bot label,
+        body .login-body .login-group .login-bot .code-gp label {
+            font-size: 1.25rem;
+            width: 35%;
+            margin-bottom: 8px;
+        }
+
+        body .login-body .login-group .login-bot input,
+        body .login-body .login-group .login-bot .code-gp .text-gp {
+            width: 65%;
+        }
+
+        body .login-body .login-group .login-bot .code-gp {
+            margin-bottom: 12px;
+        }
+
+        body .login-body .login-group .login-bot .btn-gp .btn {
+            margin-top: 0;
+            background-color: #7D0000;
+        }
+
+        @media (max-width:1536px) {
+            body .login-body {
+                margin-top: 15vh;
+            }
+
+            body footer {
+                padding-top: 0;
+
+            }
+        }
+
+        @media (max-width:1024px) {
+            body {
+                background-image: url("../img/bgimg-1024.jpg");
+            }
+
+            body .login-body {
+                margin-top: 25vh;
+            }
+        }
+
+        @media (max-width:768px) {
+            body {
+                background-image: url("../img/bgimg-768.jpg");
+            }
+
+            body .login-body {
+                margin-top: 18vh;
+            }
+        }
+
+        @media (max-width:568px) {
+            body {
+                background-image: url("../img/bgimg-568.jpg");
+            }
+
+            body .login-body {
+                margin-top: 0;
+            }
+
+            h1 {
+                font-size: 2.125rem;
+                letter-spacing: 3px;
+            }
+
+            body .login-body .login-group {
+                padding-top: 32px;
+            }
+
+            body .login-body .login-group .login-bot .code-gp {
+                margin-bottom: 24px;
+            }
+
+            body .login-body .login-group .login-bot label,
+            body .login-body .login-group .login-bot .code-gp label {
+                width: 100%;
+            }
+
+            body .login-body .login-group .login-bot input,
+            body .login-body .login-group .login-bot .code-gp .text-gp {
+                width: 100%;
+            }
+
+            body .login-body .login-group .login-bot .code-gp {
+                flex-wrap: wrap;
+            }
+
+            body .login-body .login-group .login-bot .code-gp .text-gp .code {
+                width: 50%;
+                margin-right: 16px;
+            }
+
+            body .login-body .login-group .login-bot .code-gp .text-gp .RP {
+                width: 30%;
+            }
+        }
+
+        @media (max-width:320px) {
+            body .login-body .login-group .tab {
+                margin-top: 16px;
+            }
+
+            body .login-body .login-group .tab .menu-gp .menu-btn {
+                margin-top: 0;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h4 {
+                font-size: 1.125rem;
+            }
+
+            body .login-body .login-group .login-bot {
+                margin-top: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="login-body">
+        <div class="login-group">
+            <div class="login-top">
+                <img src="img/logo.png" alt="logo" class="logo">
+                <h1>員工資訊入口網</h1>
+            </div>
+            <div class="tab">
+                <h4>登入方式</h4>
+                <div class="menu-gp">
+                    <a href="#" class="menu-btn active_btn" id="login_btn" title="登入">
+                        開機帳號
+                    </a>
+                    <a href="#" class="menu-btn" id="login_CDC_btn" title="登入">
+                        自然人憑證
+                    </a>
+                </div>
+            </div>
+
+            <form class="login-bot active" id="login_TAB">
+                <!-- <div class="form-check">
+                    <input type="radio" name='type' id="type1">
+                    <label for="type1">
+                        資料庫驗證
+                    </label>
+                    <input type="radio" name='type' id="type2">
+                    <label for="type2">
+                        AD驗證
+                    </label>
+                </div> -->
+                <label for="account">帳&emsp;號：</label>
+                <input type="text" name="account" id="account">
+                <label for="Password">密&emsp;碼：</label>
+                <input type="password" name="Password" id="Password">
+                <!-- 圖片驗證碼 -->
+                <div class="code-gp">
+                    <label for="code">驗&emsp;證&emsp;碼：</label>
+                    <div class="text-gp">
+                        <input class="code" type="text" name="code" id="code">
+                        <img class="RP" src="img/RandomPic_ForLogin.jpg" alt="圖片驗證碼">
+                        <a href=""><img class="reform" src="img/redo.svg" alt="重整"></a>
+                    </div>
+                </div>
+                <div class="btn-gp">
+                    <input type="button" value="登入" class="btn"
+                        onclick="javascript:location.href='http://ncg-backend.ylinc.link/bulletin-board2.html'">
+                    <input type="button" value="忘記密碼" class="btn" data-toggle="modal" data-target="#Modal-2">
+                </div>
+            </form>
+
+            <form class="login-bot" id="login_CDC_TAB">
+                <label for="Pin-Code">Pin Code：</label>
+                <input type="text" name="Pin-Code" id="Pin-Code">
+                <!-- 圖片驗證碼 -->
+                <div class="code-gp">
+                    <label for="code2">驗&emsp;證&emsp;碼：</label>
+                    <div class="text-gp">
+                        <input class="code" type="text" name="code" id="code2">
+                        <img class="RP" src="img/RandomPic_ForLogin.jpg" alt="圖片驗證碼">
+                        <a href=""><img class="reform" src="img/redo.svg" alt="重整"></a>
+                    </div>
+                </div>
+                <div class="btn-gp">
+                    <input type="button" value="登入" class="btn"
+                        onclick="javascript:location.href='http://ncg-backend.ylinc.link/bulletin-board2.html'">
+                    <input type="button" value="忘記密碼" class="btn">
+                </div>
+            </form>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="btn-gp">
+            <a href="apply-account.html" title="申請帳號"><span>申請帳號</span></a>
+            <a href="privacy.html" target="_blank" title="隱私權政策"><span>隱私權政策</span></a>
+            <a href="#" title="操作說明"><span>操作說明</span></a>
+        </div>
+        <p class="footer-p-L">
+            系統有任何問題請逕洽各單位指派之管理者外，另可洽詢04-123456789
+        </p>
+    </footer>
+
+    <!-- Modal-->
+    <div class="modal fade" id="Modal-2" tabindex="-1" role="dialog" aria-labelledby="Modal-2-Title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Modal-2-Title">測試</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    測試測試
+                </div>
+                <!-- <div class="modal-footer">
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        //登入方式
+        var login_btn = document.querySelector("#login_btn")
+        var login_CDC_btn = document.querySelector("#login_CDC_btn")
+
+        var login_TAB = document.querySelector("#login_TAB")
+        var login_CDC_TAB = document.querySelector("#login_CDC_TAB")
+
+        function clear_active() {
+            login_btn.classList.remove("active_btn")
+            login_CDC_btn.classList.remove("active_btn")
+            login_TAB.classList.remove("active")
+            login_CDC_TAB.classList.remove("active")
+        }
+
+
+        login_btn.onclick = function () {
+            clear_active()
+            login_btn.classList.toggle("active_btn")
+            login_TAB.classList.toggle("active")
+        }
+        login_CDC_btn.onclick = function () {
+            clear_active()
+            login_CDC_btn.classList.toggle("active_btn")
+            login_CDC_TAB.classList.toggle("active")
+        }
+        console.error;
+    </script>
+
+    <!-- modal -->
+    <script>
+        $(".modal2-btn").click(function () {
+            $('#Modal-2').modal({ backdrop: 'static', keyboard: false });
+        });
+    </script>
+</body>
+
+</html>

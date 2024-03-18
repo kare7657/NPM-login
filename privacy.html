@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAM EIP</title>
+    <!-- Font Awesome Icons -->
+    <script src="fontawesome-free-6.1.1-web/js/fontawesome-kit.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="fontawesome-free-6.1.1-web/css/all.css">
+    <!-- JQ UI -->
+    <link rel="stylesheet" href="scss/jquery-ui.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="scss/adminlte.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="scss/loginstyle.css">
+
+    <style>
+        body {
+            background-image: url("../img/bgimg.jpg");
+            background-position: center bottom;
+            display: block;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            min-height: initial;
+            margin-top: 0;
+            transform: translateY(25vh);
+            border-radius: 16px;
+            max-width: 800px;
+        }
+
+        @media (max-width:1024px) {
+            body {
+                background-image: url("../img/bgimg-1024.jpg");
+            }
+        }
+
+        @media (max-width:768px) {
+            body {
+                background-image: url("../img/bgimg-768.jpg");
+            }
+            .container {
+                max-width: 550px;
+                transform: translateY(18vh);
+            }
+
+        }
+
+        @media (max-width:568px) {
+            body {
+                background-image: url("../img/bgimg-568.jpg");
+            }
+
+            .container {
+                transform: translateY(10vh);
+                margin: 16px;
+                width: auto;
+            }
+        }
+
+        @media (max-width:320px) {
+            .container {
+                transform: initial;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="container">
+        <h3 class="text-center mb-2">隱私權政策</h3>
+        <p>
+            第三方應用程式供應商所收集的資訊，則受其隱私權政策規範。目前本網站上使用第三方應用程式如下：
+        </p>
+        <ul>
+            <li>Google canendar – 本網站經由 Google canendar 更新您的日曆資料。</li>
+            <li> Google OAuth
+                2.0 – 本網站透過 Google OAuth 2.0 API 讓使用者經由Google帳號驗證通過後，登入本網站，使用各項會員服務。</li>
+        </ul>
+        <p>
+            我們經過您的同意後取得日曆等個人資料，本網站不會儲存您的密碼。
+            我們透過前端掛號程式呼叫API帳號驗證通過後，快速更新google calendar資料。
+        </p>
+    </section>
+
+    <!-- Modal-->
+    <div class="modal fade" id="Modal-2" tabindex="-1" role="dialog" aria-labelledby="Modal-2-Title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Modal-2-Title">測試</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    測試測試
+                </div>
+                <!-- <div class="modal-footer">
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        //登入方式
+        var login_btn = document.querySelector("#login_btn")
+        var login_CDC_btn = document.querySelector("#login_CDC_btn")
+
+        var login_TAB = document.querySelector("#login_TAB")
+        var login_CDC_TAB = document.querySelector("#login_CDC_TAB")
+
+        function clear_active() {
+            login_btn.classList.remove("active_btn")
+            login_CDC_btn.classList.remove("active_btn")
+            login_TAB.classList.remove("active")
+            login_CDC_TAB.classList.remove("active")
+        }
+
+
+        login_btn.onclick = function () {
+            clear_active()
+            login_btn.classList.toggle("active_btn")
+            login_TAB.classList.toggle("active")
+        }
+        login_CDC_btn.onclick = function () {
+            clear_active()
+            login_CDC_btn.classList.toggle("active_btn")
+            login_CDC_TAB.classList.toggle("active")
+        }
+        console.error;
+    </script>
+
+    <!-- modal -->
+    <script>
+        $(".modal2-btn").click(function () {
+            $('#Modal-2').modal({ backdrop: 'static', keyboard: false });
+        });
+    </script>
+</body>
+
+</html>
